@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  body {
+    @apply bg-gradient-to-br from-paper-50 to-orange-50 min-h-screen;
+  }
+}
+
+@layer components {
+  .calendar-cell {
+    @apply relative p-3 text-center transition-all duration-200 hover:scale-105 cursor-pointer border border-calendar-border rounded-lg bg-white shadow-sm hover:shadow-md;
+  }
+  .cell-selected {
+    @apply bg-calendar-selected text-white shadow-lg scale-105;
+  }
+  .cell-range {
+    @apply bg-calendar-range border-l-4 border-r-4 border-calendar-selected;
+  }
+  .cell-today {
+    @apply ring-2 ring-calendar-today ring-offset-2 bg-red-50;
+  }
+}
