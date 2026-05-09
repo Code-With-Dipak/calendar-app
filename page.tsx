@@ -32,22 +32,23 @@ export default function HomePage() {
     }
 
     // Reset if clicking selected range
+    /// If clicked date is within the current range, reset selection
     setSelectedStart(null);
     setSelectedEnd(null);
   };
 
   return (
-    <main className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-serif font-bold bg-gradient-to-r from-calendar-text via-orange-700 to-amber-800 bg-clip-text text-transparent mb-4">
+    <main className="min-h-screen px-4 py-12 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+      <div className="mb-12 text-center">
+        <h1 className="mb-4 font-serif text-4xl font-bold text-transparent md:text-5xl bg-gradient-to-r from-calendar-text via-orange-700 to-amber-800 bg-clip-text">
           Interactive Wall Calendar
         </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        <p className="max-w-2xl mx-auto text-xl text-gray-600">
           Select date range, add notes, and organize your month like a real wall calendar.
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-4 gap-8 lg:gap-12 items-start">
+      <div className="grid items-start gap-8 lg:grid-cols-4 lg:gap-12">
         {/* Hero Image */}
         <div className="lg:col-span-1">
           <div className="relative">
@@ -56,14 +57,14 @@ src="/images/Wall-Calendars-3.webp"
 alt="Quapri Wall Calendar Hero"
               width={400}
               height={500}
-              className="w-full h-auto shadow-paper rounded-3xl hover:scale-105 transition-transform duration-300 mx-auto"
+              className="w-full h-auto mx-auto transition-transform duration-300 shadow-paper rounded-3xl hover:scale-105"
               priority
             />
           </div>
         </div>
 
         {/* Calendar + Notes */}
-        <div className="lg:col-span-3 space-y-8 lg:max-w-4xl">
+        <div className="space-y-8 lg:col-span-3 lg:max-w-4xl">
           <Calendar 
             onDateSelect={handleDateSelect}
             selectedStart={selectedStart}
@@ -78,7 +79,7 @@ alt="Quapri Wall Calendar Hero"
 
       {/* Selection info */}
       {(selectedStart || selectedEnd) && (
-        <div className="mt-12 text-center p-6 bg-paper-100 rounded-2xl shadow-sm">
+        <div className="p-6 mt-12 text-center shadow-sm bg-paper-100 rounded-2xl">
           <p className="text-lg text-calendar-text">
             {selectedStart && !selectedEnd && `Selected start: ${selectedStart.toLocaleDateString()}`}
             {selectedStart && selectedEnd && `Selected range: ${selectedStart.toLocaleDateString()} to ${selectedEnd.toLocaleDateString()}`}
@@ -89,7 +90,7 @@ alt="Quapri Wall Calendar Hero"
               setSelectedStart(null);
               setSelectedEnd(null);
             }}
-            className="mt-4 px-8 py-3 bg-red-500 text-white font-semibold rounded-xl hover:bg-red-600 transition-all shadow-lg"
+            className="px-8 py-3 mt-4 font-semibold text-white transition-all bg-red-500 shadow-lg rounded-xl hover:bg-red-600"
           >
             Clear Selection
           </button>
